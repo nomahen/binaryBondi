@@ -1,0 +1,84 @@
+#	Runtime parameters for the hlaCluster, Flash4.5
+#
+
+# Wind
+sim_rhoAmbient  = 1.0
+gamma           = 1.666667      # Gas ratio of specific heats
+
+# sink params
+q = 1.0            # mass ratio
+sma = 1.0          # units of bondi radius of total mass
+sim_radius = 0.05                    
+sim_max_ref_rad = 1.5  # factor times sim_radius for max refine
+sim_presfactor = 1.d-1
+
+# grf params
+sim_useGrf = .true.
+sim_grf = "grf.txt"
+sim_numGrf = 100
+
+# angular momentum profile params
+sim_amProf = "none" # "none", "rigid", "shell", "corotating"
+sim_kepFact = 0.0   # between 0 and 1
+
+# Boundary conditions
+xl_boundary_type = "outflow"
+xr_boundary_type = "outflow"
+yl_boundary_type = "outflow"
+yr_boundary_type = "outflow"
+zl_boundary_type = "outflow"
+zr_boundary_type = "outflow"
+
+# Effective boundary
+sim_rbound = 20.0 # NO: should be always greater than 1 but less than domain size 
+
+
+# Computational domain and refinement
+
+geometry = "cartesian"
+
+xmin	= -24.0
+xmax	= 24.0
+ymin	= -24.0
+ymax	= 24.0
+zmin    = -24.0
+zmax    = 24.0
+
+Nblockx	= 6
+Nblocky	= 6
+Nblockz	= 6
+
+lrefine_min = 1
+lrefine_max = 10
+
+
+#	Simulation (grid, time, I/O) parameters
+
+cfl     = 0.8
+basenm  = "bondiBin_"
+
+#restart         	= .false.
+#checkpointFileNumber	= 
+#plotfileNumber		= 
+
+checkpointFileIntervalTime    = 5
+#checkpointFileIntervalStep   =  20
+
+plotFileIntervalTime  	= 1
+
+nend            = 50000000
+tmax            = 50
+
+gr_lrefineMaxRedDoByLogR = .true.
+gr_lrefineMaxRedRadiusFact = 0.3
+refine_var_1	= "eint"
+
+plot_var_1 	= "dens"
+plot_var_2 	= "pres"
+plot_var_3 	= "temp"
+plot_var_4 	= "velx"
+plot_var_5 	= "vely"
+plot_var_6 	= "velz"
+
+log_file        = "bondiBin.log"
+

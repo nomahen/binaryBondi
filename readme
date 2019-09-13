@@ -1,0 +1,10 @@
+############################
+## Binary Bondi Accretion ##
+## Nicholas Kaaz 2019     ##
+############################
+
+This setup simulates Bondi accretion onto binary accretors in the non inertial rotating frame. It also relies on the custom Gravity module "BinaryNonInertial". Everything is done in dimensionless units such that the Bondi radius = 1, sound speed at infinity = 1, andtotal mass = 1/2G. It's built for 3D (not configured for 2D!) Cartesian grid and uses spherical boundary conditions. Formally, the boundary conditions in this setup are "outflow" - BCs are not generated how FLASH usually does. Instead, every timestep, the ambient conditions are reset beyond a user-given radius (this is done in Driver_sourceTerms). The inner boundary condition is absorbing. 
+
+There is also functionality here to read in a "Gaussian Random Field" from a text file if desired. The text file itself can be generated using the command line from grf.py; you can provide the resolution of the GRF (number of grid points), the exponent of the power spectrum, and the amplitude of the fluctuations. Simulation_initBlock can read this text file and interprets the GRF as values for the initial density conditions. Simulation_initBlock automatically parses the GRF text file, scales it to the computational domain, and interpolates the GRF fluctuation values to the grid data. For more information, type "python grf.py -h". The number of grid points per dimension must be given as a runtime parameter in flash.par using "sim_numGrf" (i.e., sim_numGRf must be the same as the -r value used in grf.py). To use the GRF, "sim_useGrf" must be set to true. The GRF text file is a runtime parameter given by "sim_grf". 
+
+If there are any questions please do not hesitate to ask! 

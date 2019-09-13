@@ -1,0 +1,28 @@
+#   Configuration file binaryBondi
+#   Sink is only configured for 3D
+#   ./setup binaryBondi -auto -3d -objdir="./objdir/binaryBondi" +splitHydro +pm4dev
+
+REQUIRES Driver
+REQUIRES physics/Hydro
+REQUIRES physics/Eos
+
+REQUIRES Grid/GridBoundaryConditions/OneRow
+REQUIRES physics/Gravity/GravityMain/BinaryNonInertial
+
+PARAMETER  sim_pAmbient     REAL   1.0
+PARAMETER  sim_rhoAmbient   REAL   1.0
+
+PARAMETER  sim_radius       REAL    0.05  
+PARAMETER  sim_presfactor   REAL    1.d-1
+PARAMETER  sim_max_ref_rad  REAL    3.d0 
+PARAMETER  sim_tRamp        REAL    1.d0
+PARAMETER  sim_rbound       REAL    1.d+1
+
+# NKO: Gaussian random field parameters:
+PARAMETER sim_useGrf BOOLEAN false
+PARAMETER sim_grf STRING "grf.txt"
+PARAMETER sim_numGrf INTEGER 100
+
+# NKO: Angular momentum profile parameters
+PARAMETER sim_amProf STRING "none" ["none","rigid","shell","corotating"]
+PARAMETER sim_kepFact REAL 0.0 [0 to 1]
